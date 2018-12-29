@@ -1,0 +1,25 @@
+{
+  "name": "github_user_search",
+  "version": "1.0.0",
+  "description": "this is an express + react app to search github user",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "install": "npm install && cd client && npm install",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "development": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bikram",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.9"
+  }
+}
