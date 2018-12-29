@@ -19,12 +19,16 @@ const styles = theme => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: theme.spacing.unit * 2,
+    textAlign: 'center',
   },
   media: {
     // ⚠️ object-fit is not supported by IE11.
     // objectFit: 'cover',
     borderRadius: '50%',
     height: 276,
+  },
+  cardActionCenter: {
+      justifyContent: 'center'
   },
 });
 
@@ -39,23 +43,24 @@ function ImgMediaCard(props) {
           alt="Contemplative Reptile"
           className={classes.media}
           height="140"
-          image="http://www.psdgraphics.com/file/user-icon.jpg"
+          image={ props.user.avatar_url }
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+          { props.user.login }
           </Typography>
           <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            Score: { props.user.score }
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-            Visit profile
-        </Button>
+      <CardActions className={classes.cardActionCenter}>
+          <a href={ props.user.html_url } target="_blank" rel="noopener noreferrer">
+            <Button size="small" color="primary">
+                Visit profile
+            </Button>
+          </a>
       </CardActions>
     </Card>
     </div>

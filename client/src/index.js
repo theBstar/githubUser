@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
-import { store } from './reduxStore/store.js'
-import { search } from './reduxStore/store.js';
+import { store, search } from './reduxStore/store.js';
 import NavBar from './components/navBar/navBar.js';
 import AuthForm from './components/authForm/authForm.js';
 import UserCardContainer from './containers/userCardContainer/userContainer.js';
@@ -26,7 +25,6 @@ class App extends React.Component {
                 isAuthenticated: true,
                 authToken: 'lksjfdkj3e4df'
             },
-            searchResult: this.props.result,
         };
         this.handleLogout = this.handleLogout.bind(this);
     }
@@ -45,25 +43,27 @@ class App extends React.Component {
 
     render() {
         console.log('props from app', this.props)
+        console.log('state from app', this.state)
         return (
             <React.Fragment>
-                <NavBar 
-                    auth = { this.state.auth }
-                    logoutHandler = { this.handleLogout }
+                <NavBar
+                    auth={ this.state.auth }
+                    logoutHandler={ this.handleLogout }
+                    searchUser={ this.props.searchUser }
                 />
                 {
                     (
                         this.state.auth &&
-                        this.state.auth.isAuthenticated && 
+                        this.state.auth.isAuthenticated &&
                         this.state.auth.authToken
                     ) ? (
-                        <UserCardContainer />
+                            <UserCardContainer result={ this.props.result } />
                     ) : (
                         <AuthForm auth={{
                             text: 'Sign in',
                             bottomText: 'Sign up'
-                        }}/>
-                    ) 
+                        }} />
+                    )
                 }
 
             </React.Fragment>
@@ -90,10 +90,10 @@ const AppWrapper = connect(mapStateToProps, mapDispatchToProps)(App);
 
 
 
-const UserSearchApp = ()=> {
+const UserSearchApp = () => {
     return (
         <BrowserRouter>
-            <Provider store = {store}>
+            <Provider store={store}>
                 <AppWrapper />
             </Provider>
         </BrowserRouter>

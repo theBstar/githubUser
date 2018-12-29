@@ -110,7 +110,7 @@ class SearchAppBar extends React.Component {
         console.log('this is the props', this.props)
         return (
             <div className={classes.root}>
-                <AppBar position="static">
+                <AppBar>
                     <Toolbar className={classes.appBar}>
                         {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
                             <MenuIcon />
@@ -126,7 +126,10 @@ class SearchAppBar extends React.Component {
                                         <SearchIcon />
                                     </div>
                                     <InputBase
-                                        fullWidth={true}
+                                        onChange={(e)=> {
+                                            console.log('this is the query from inputBase ', e.target.value)
+                                            this.props.searchUser(e.target.value) 
+                                        }}
                                         placeholder="Search…"
                                         classes={{
                                             root: classes.inputRoot,
