@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -47,9 +48,13 @@ const styles = theme => ({
     textAlign: "center",
     paddingTop: `${theme.spacing.unit * 2}px`,
   },
+  clickLink: {
+    textDecoration: 'underline',
+    cursor: 'pointer',
+  }
 });
 
-function SignIn(props) {
+function Auth(props) {
   const { classes } = props;
 
   return (
@@ -62,7 +67,7 @@ function SignIn(props) {
         <Typography component="h1" variant="h5">
           {props.auth.text}
         </Typography>
-        <form className={classes.form} onSubmit={(e)=> {e.preventDefault(); console.log('formSubmitted')}}>
+        <form className={classes.form} onSubmit={props.onSubmit}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
             <Input type="email" id="email" name="email" autoComplete="email" autoFocus />
@@ -87,7 +92,7 @@ function SignIn(props) {
           {
               props.auth.bottomText ? (
                 <Typography className={classes.signUpOption} component="p" variant="subtitle1">
-                    Don't have an account? Sign up here
+                    {props.auth.bottomText} <span className={classes.clickLink} onClick={props.bottomLinkOnClick}>here</span>
                 </Typography>
               ): ''
           }
@@ -97,8 +102,8 @@ function SignIn(props) {
   );
 }
 
-SignIn.propTypes = {
+Auth.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(Auth);

@@ -30,12 +30,12 @@ function UserCardContainer(props) {
   return (
     <div className={classes.main}>
         {
-            (props.result.isSearching) ? (
+            (props.result && props.result.isSearching) ? (
                 <div className={classes.center}>
                     <CircularProgress disableShrink/>
                 </div>
             ) : (
-                (props.result.users && props.result.users.length) ? (
+                (props.result && props.result.users && props.result.users.length) ? (
                     props.result.users.map((user, index) => {
                         // eslint-disable-next-line no-unused-expressions
                         return <UserCard user={ user } key={ index }/>
