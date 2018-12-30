@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "install": "npm install && cd client && npm install",
+    "installAll": "npm install && cd client && npm install",
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "development": "concurrently \"npm run server\" \"npm run client\"",
