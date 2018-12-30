@@ -14,7 +14,7 @@ class App extends React.Component {
         super(props);
         this.state = {
             auth: {
-                isAuthenticated: true,
+                isAuthenticated: false,
             },
             route: 'signin',
         };
