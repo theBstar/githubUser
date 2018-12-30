@@ -5,5 +5,7 @@
 ## To run the project locally
   1. Clone the repo
   2. Go to the project directory
-  3. Run "npm run install"
-  4. Run "npm run development", this will start the react app on prot 3000 and express app on 3100
+  3. Create a folder "Database" in the parent directory of project folder
+  4. Go to the "Database" folder and create database "database.sqlite"
+  5. Run "npm run installAll"
+  6. Run "npm run development", this will start the react app on prot 3000 and express app on 3100
