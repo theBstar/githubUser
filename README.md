@@ -2,7 +2,7 @@
 
 #This document assumes you have already installed nodejs, with latest npm, sqlite and create-react-app
 
-## To run the project locally
+## To run the project locally follow the instruction sequentially
   1. Clone the repo
   2. Go to the project directory
   3. Create a folder "Database" in the parent directory of project folder
